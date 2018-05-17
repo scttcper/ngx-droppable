@@ -1,0 +1,34 @@
+{
+  "name": "@ctrl/ngx-droppable",
+  "version": "0.0.0",
+  "sideEffects": false,
+  "peerDependencies": {
+    "@angular/core": "^5.2.0 || ^6.0.0",
+    "@angular/common": "^5.2.0 || ^6.0.0",
+    "@angular/platform-browser": "^5.2.0 || ^6.0.0",
+    "rxjs": "^6.0.0"
+  },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public_api.ts"
+    },
+    "dest": "../../dist"
+  },
+  "repository": "https://github.com/typectrl/ngx-droppable.git",
+  "homepage": "https://github.com/typectrl/ngx-droppable",
+  "bugs": "https://github.com/typectrl/ngx-droppable/issues",
+  "license": "MIT",
+  "description": "give file dropping super-powers to any HTML element",
+  "keywords": [
+    "droppable",
+    "drop",
+    "drop-file",
+    "file",
+    "dropper",
+    "dropping",
+    "select-files",
+    "file-selector",
+    "filelist",
+    "angular"
+  ]
+}
