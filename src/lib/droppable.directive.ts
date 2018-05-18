@@ -13,12 +13,12 @@ import {
   Output,
 } from '@angular/core';
 
-@Directive({ selector: '[droppable]' })
+@Directive({ selector: '[droppable]', exportAs: 'droppable' })
 export class DroppableDirective
   implements OnChanges, OnDestroy, AfterContentInit {
   /** prompt for files when clicked */
   @Input() isClickable = true;
-  /** multiple files drop */
+  /** allow multiple files dropped or selected */
   @Input() acceptsMultipleFiles = true;
   /** append CSS class when files are dragged on element */
   @Input() appendStatusClasses = true;
@@ -97,11 +97,12 @@ export class DroppableDirective
 
   ngOnDestroy() {
     // destroy created input
-    this.virtualInputElement.removeEventListener(
-      'change',
-      this.onVirtualInputElementChange.bind(this),
-    );
-    this.virtualInputElement.parentNode.removeChild(this.virtualInputElement);
+    if (this.virtualInputElement) {
+      this.virtualInputElement.removeEventListener(
+        'change',
+        this.onVirtualInputElementChange.bind(this),
+      );
+    }
   }
 
   makeVirtualInputElement() {

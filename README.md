@@ -1,4 +1,18 @@
-# Angular Droppable
+<div align="center">
+  <h1>ngx-droppable</h1>
+  <br>
+  <a href="https://www.npmjs.com/package/@ctrl/ngx-droppable">
+    <img src="https://badge.fury.io/js/%40ctrl%2Fngx-droppable.svg" alt="npm">
+  </a>
+  <a href="https://travis-ci.org/TypeCtrl/ngx-droppable">
+    <img src="https://img.shields.io/travis/TypeCtrl/ngx-droppable/master.svg" alt="travis">
+  </a>
+  <a href="https://codecov.io/github/typectrl/ngx-droppable">
+    <img src="https://img.shields.io/codecov/c/github/typectrl/ngx-droppable.svg" alt="codecov">
+  </a>
+  <br>
+  <br>
+</div>
 > Give file dropping super-powers to any element or component
 
 ## Install
@@ -20,13 +34,15 @@ Add droppable directive to element
 | name                 | type    | default    | description                                        |
 | -------------------- | ------- | ---------- | -------------------------------------------------- |
 | isClickable          | boolean | true       | prompt for files when clicked                      |
-| acceptsMultipleFiles | boolean | true       | multiple files drop                                |
+| acceptsMultipleFiles | boolean | true       | allow multiple files dropped or selected           |
 | appendStatusClasses  | boolean | true       | append CSS class when files are dragged on element |
 | dragOverClass        | string  | 'dragover' | class added when files are hovered over element    |
 
-### Ouput
+## Ouput
 
-__(filesDropped)__  
-Emits a `File[]` when any file or files are added
+| name         | type   | description                                                                                               |
+| ------------ | ------ | --------------------------------------------------------------------------------------------------------- |
+| filesDropped | File[] | An array of the [files blobs](https://developer.mozilla.org/en-US/docs/Web/API/File) that have been added |
+
 
 
