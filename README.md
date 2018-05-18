@@ -13,6 +13,7 @@
   <br>
   <br>
 </div>
+
 > Give file dropping super-powers to any element or component
 
 ## Install
