@@ -13,7 +13,6 @@
     "lint": "ng lint ngx-droppable --type-check --format stylish",
     "lint:fix": "ng lint ngx-droppable --type-check --fix --format stylish",
     "ghpages": "ng build --prod --no-progress --baseHref='/ngx-droppable/'",
-    "bundlesize": "npx bundlesize",
     "travis-deploy-once": "travis-deploy-once",
     "commit": "git-cz",
     "semantic-release": "cd dist/packages-dist && semantic-release"
@@ -61,5 +60,17 @@
     "ts-node": "6.0.3",
     "tslint": "5.10.0",
     "typescript": "2.7.2"
+  },
+  "engines": {
+    "npm": ">= 6",
+    "node": ">= 8"
+  },
+  "release": {
+    "branch": "master"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
