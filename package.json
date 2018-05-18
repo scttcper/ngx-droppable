@@ -15,7 +15,7 @@
     "ghpages": "ng build --prod --no-progress --baseHref='/ngx-droppable/'",
     "travis-deploy-once": "travis-deploy-once",
     "commit": "git-cz",
-    "semantic-release": "cd dist/packages-dist && semantic-release"
+    "semantic-release": "cd dist && semantic-release"
   },
   "dependencies": {
     "@angular/animations": "^6.0.2",
