@@ -2,7 +2,7 @@
   <h1>ngx-droppable</h1>
   <br>
   <a href="https://www.npmjs.com/package/@ctrl/ngx-droppable">
-    <img src="https://badge.fury.io/js/%40ctrl%2Fngx-droppable.svg" alt="npm">
+    <img src="https://img.shields.io/npm/v/@ctrl/ngx-droppable.svg" alt="npm">
   </a>
   <a href="https://travis-ci.org/TypeCtrl/ngx-droppable">
     <img src="https://img.shields.io/travis/TypeCtrl/ngx-droppable/master.svg" alt="travis">
