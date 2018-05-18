@@ -34,20 +34,20 @@ Add droppable directive to element
 ```html
 <div droppable (filesDropped)="handleFilesDropped($event)"></div>
 ```
-## Inputs
+## [Inputs]
 
-| name                 | type    | default    | description                                        |
-| -------------------- | ------- | ---------- | -------------------------------------------------- |
-| isClickable          | boolean | true       | prompt for files when clicked                      |
-| acceptsMultipleFiles | boolean | true       | allow multiple files dropped or selected           |
-| appendStatusClasses  | boolean | true       | append CSS class when files are dragged on element |
-| dragOverClass        | string  | 'dragover' | class added when files are hovered over element    |
+| name                 | type      | default      | description                                        |
+| -------------------- | --------- | ------------ | -------------------------------------------------- |
+| isClickable          | `boolean` | `true`       | prompt for files when clicked                      |
+| acceptsMultipleFiles | `boolean` | `true`       | allow multiple files dropped or selected           |
+| appendStatusClasses  | `boolean` | `true`       | append CSS class when files are dragged on element |
+| dragOverClass        | `string`  | `'dragover'` | class added when files are hovered over element    |
 
-## Ouput
+## (Ouput)
 
-| name         | type   | description                                                                                               |
-| ------------ | ------ | --------------------------------------------------------------------------------------------------------- |
-| filesDropped | File[] | An array of the [files blobs](https://developer.mozilla.org/en-US/docs/Web/API/File) that have been added |
+| name         | type     | description                                                                                               |
+| ------------ | -------- | --------------------------------------------------------------------------------------------------------- |
+| filesDropped | `File[]` | An array of the [files blobs](https://developer.mozilla.org/en-US/docs/Web/API/File) that have been added |
 
 ## License
 MIT
