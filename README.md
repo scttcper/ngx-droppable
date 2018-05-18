@@ -14,7 +14,9 @@
   <br>
 </div>
 
-> Give file dropping super-powers to any element or component
+> Give file dropping super-powers to any element or component  
+
+Demo: https://typectrl.github.io/ngx-droppable/
 
 ## Install
 ```sh
