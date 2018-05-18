@@ -16,6 +16,8 @@
 
 > Give file dropping super-powers to any element or component  
 
+Based on (droppable.js)[https://github.com/lifenautjoe/droppable]  
+
 Demo: https://typectrl.github.io/ngx-droppable/
 
 ## Install
