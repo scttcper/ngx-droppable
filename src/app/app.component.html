@@ -1,1 +1,36 @@
-<div style="width: 50px; height: 50px; background-color: blue" droppable></div>
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-9 col-md-8 col-lg-6 col-xl-5 text-center">
+      <div class="card">
+        <div class="card-body p-2 p-sm-3">
+
+          <div class="col-12 mt-5 mb-4 text-center">
+            <!-- fontawesome pro license held by @scttcper -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="40">
+              <path d="M369.9 97.9L286 14C277 5 264.8-.1 252.1-.1H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V131.9c0-12.7-5.1-25-14.1-34zm-22.6 22.7c2.1 2.1 3.5 4.6 4.2 7.4H256V32.5c2.8.7 5.3 2.1 7.4 4.2l83.9 83.9zM336 480H48c-8.8 0-16-7.2-16-16V48c0-8.8 7.2-16 16-16h176v104c0 13.3 10.7 24 24 24h104v304c0 8.8-7.2 16-16 16zm-48-180v8c0 6.6-5.4 12-12 12h-68v68c0 6.6-5.4 12-12 12h-8c-6.6 0-12-5.4-12-12v-68h-68c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h68v-68c0-6.6 5.4-12 12-12h8c6.6 0 12 5.4 12 12v68h68c6.6 0 12 5.4 12 12z"
+              />
+            </svg>
+            <h1 class="mb-2">Angular Droppable</h1>
+            <p class="lead">Give file dropping super-powers to any element or component</p>
+            <ntkme-github-button class="text-center" [count]="true" user="typectrl" repo="ngx-droppable">
+            </ntkme-github-button>
+          </div>
+          <div class="row p-2 p-sm-4 justify-content-center">
+            <div class="col-12">
+
+              <!-- Droppable -->
+              <div class="d-flex rounded justify-content-center droppable" droppable (filesDropped)="handleFilesDropped($event)">
+                <div class="text-center align-self-center">
+                  <strong>Drop files here or click</strong>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,20 +1,21 @@
 import { DOCUMENT } from '@angular/common';
 import {
-  Directive,
-  HostBinding,
-  OnInit,
-  Input,
-  Inject,
-  OnChanges,
-  HostListener,
-  ElementRef,
-  OnDestroy,
   AfterContentInit,
+  Directive,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Inject,
+  Input,
+  OnChanges,
+  OnDestroy,
+  Output,
 } from '@angular/core';
 
 @Directive({ selector: '[droppable]' })
 export class DroppableDirective
-  implements OnInit, OnChanges, OnDestroy, AfterContentInit {
+  implements OnChanges, OnDestroy, AfterContentInit {
   /** prompt for files when clicked */
   @Input() isClickable = true;
   /** multiple files drop */
@@ -22,13 +23,12 @@ export class DroppableDirective
   /** append CSS class when files are dragged on element */
   @Input() appendStatusClasses = true;
   @Input() dragOverClass = 'dragover';
+  @Output() filesDropped = new EventEmitter<File[]>();
   /** Accessibility **/
   @HostBinding('attr.tabIndex') tabIndex = 0;
   /** Accessibility **/
   @HostBinding('attr.role') role = 'button';
   private virtualInputElement: HTMLInputElement;
-  private latestDroppedFiles: File[];
-  private onFilesDroppedEventListeners: FilesWereDroppedEventListener[] = [];
 
   @HostListener('dragover', ['$event'])
   handleDragover(e: Event) {
@@ -68,27 +68,39 @@ export class DroppableDirective
   constructor(
     @Inject(DOCUMENT) protected _document: any,
     private element: ElementRef,
-  ) {
-    console.log('swag');
-  }
-
-  ngOnInit() {
-    this.virtualInputElement = this.makeVirtualInputElement();
-  }
+  ) {}
 
   ngOnChanges() {
+    if (this.virtualInputElement) {
+      this.setAcceptsMultipleFiles();
+    }
+  }
+
+  ngAfterContentInit() {
+    this.virtualInputElement = this.makeVirtualInputElement();
+    this.virtualInputElement.addEventListener(
+      'change',
+      this.onVirtualInputElementChange.bind(this),
+    );
+    this.setAcceptsMultipleFiles();
+  }
+
+  setAcceptsMultipleFiles() {
     this.virtualInputElement.setAttribute(
       'multiple',
       this.acceptsMultipleFiles.toString(),
     );
-  }
-
-  ngAfterContentInit() {
-    this.virtualInputElement.addEventListener('change', this.onVirtualInputElementChange.bind(this));
+    if (!this.acceptsMultipleFiles) {
+      this.virtualInputElement.removeAttribute('multiple');
+    }
   }
 
   ngOnDestroy() {
-    this.virtualInputElement.removeEventListener('change', this.onVirtualInputElementChange.bind(this));
+    // destroy created input
+    this.virtualInputElement.removeEventListener(
+      'change',
+      this.onVirtualInputElementChange.bind(this),
+    );
     this.virtualInputElement.parentNode.removeChild(this.virtualInputElement);
   }
 
@@ -99,12 +111,12 @@ export class DroppableDirective
     return input;
   }
 
-  private onVirtualInputElementChange(e: Event) {
+  onVirtualInputElementChange(e: Event) {
     this.onDroppableElementChange(e);
     this.virtualInputElement.value = '';
   }
 
-  private onDroppableElementChange(event: { [key: string]: any }) {
+  onDroppableElementChange(event: { [key: string]: any }) {
     let files;
     if (event['dataTransfer']) {
       files = event['dataTransfer'].files;
@@ -116,23 +128,10 @@ export class DroppableDirective
 
     // Files is FileList, we convert to array
     const filesArray: File[] = Array.from(files);
-    this.setLatestDrop(filesArray);
+    this.filesDropped.emit(filesArray);
   }
 
   promptForFiles() {
     this.virtualInputElement.click();
   }
-
-  private setLatestDrop(files: Array<File>) {
-    this.latestDroppedFiles = files;
-    this.emitFilesWereDropped(files);
-  }
-
-  private emitFilesWereDropped(files: Array<File>) {
-    this.onFilesDroppedEventListeners.forEach(listener => {
-      listener(files);
-    });
-  }
 }
-
-export type FilesWereDroppedEventListener = (files: File[]) => any;
