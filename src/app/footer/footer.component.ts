@@ -16,8 +16,7 @@ import { ChangeDetectionStrategy, Component, VERSION } from '@angular/core';
   .footer {
     line-height: 2;
     text-align: center;
-    font-size: 12px;
-    color: #999;
+    color: #4e4e4e;
   }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
