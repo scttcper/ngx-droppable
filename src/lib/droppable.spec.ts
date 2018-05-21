@@ -10,6 +10,7 @@ import { DroppableDirective } from './droppable.directive';
     (filesDropped)="handleFilesDropped($event)"
     [acceptsMultipleFiles]="acceptsMultipleFiles"
     [appendStatusClasses]="appendStatusClasses"
+    [accept]="accept"
   ></div>
   `,
 })
@@ -17,6 +18,7 @@ export class TestComponent {
   @ViewChild('droppable') droppable: DroppableDirective;
   acceptsMultipleFiles = true;
   appendStatusClasses = true;
+  accept: string | false = '.jpg';
   files: File[] = [];
   handleFilesDropped(files: File[]) {
     this.files = files;
@@ -62,6 +64,34 @@ describe('Droppable', () => {
     const mock = spyOn(tc.droppable['virtualInputElement'], 'click');
     tc.droppable.promptForFiles();
     expect(mock).toHaveBeenCalled();
+  }));
+  it('should set multiple', async(() => {
+    const fixture = TestBed.createComponent(TestComponent);
+    fixture.detectChanges();
+    const tc: TestComponent = fixture.debugElement.componentInstance;
+    expect(tc.droppable['virtualInputElement'].getAttribute('multiple')).toBe('true');
+  }));
+  it('should remove multiple', async(() => {
+    const fixture = TestBed.createComponent(TestComponent);
+    fixture.detectChanges();
+    const tc: TestComponent = fixture.debugElement.componentInstance;
+    tc.acceptsMultipleFiles = false;
+    fixture.detectChanges();
+    expect(tc.droppable['virtualInputElement'].getAttribute('multiple')).toBe(null);
+  }));
+  it('should set accepted', async(() => {
+    const fixture = TestBed.createComponent(TestComponent);
+    fixture.detectChanges();
+    const tc: TestComponent = fixture.debugElement.componentInstance;
+    expect(tc.droppable['virtualInputElement'].getAttribute('accept')).toBe('.jpg');
+  }));
+  it('should remove accepted', async(() => {
+    const fixture = TestBed.createComponent(TestComponent);
+    fixture.detectChanges();
+    const tc: TestComponent = fixture.debugElement.componentInstance;
+    tc.accept = false;
+    fixture.detectChanges();
+    expect(tc.droppable['virtualInputElement'].getAttribute('accept')).toBe(null);
   }));
   describe('handleDragover(event)', () => {
     let fakeEvent: any;

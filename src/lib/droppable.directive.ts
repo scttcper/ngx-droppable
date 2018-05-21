@@ -20,6 +20,8 @@ export class DroppableDirective
   @Input() isClickable = true;
   /** allow multiple files dropped or selected */
   @Input() acceptsMultipleFiles = true;
+  /** input limit accepted file types via MIME */
+  @Input() accept: string | false = false;
   /** append CSS class when files are dragged on element */
   @Input() appendStatusClasses = true;
   @Input() dragOverClass = 'dragover';
@@ -79,6 +81,7 @@ export class DroppableDirective
   ngOnChanges() {
     if (this.virtualInputElement) {
       this.setAcceptsMultipleFiles();
+      this.setAccepted();
     }
   }
 
@@ -89,16 +92,29 @@ export class DroppableDirective
       this.onVirtualInputElementChange.bind(this),
     );
     this.setAcceptsMultipleFiles();
+    this.setAccepted();
   }
 
   setAcceptsMultipleFiles() {
+    if (!this.acceptsMultipleFiles) {
+      this.virtualInputElement.removeAttribute('multiple');
+      return;
+    }
     this.virtualInputElement.setAttribute(
       'multiple',
       this.acceptsMultipleFiles.toString(),
     );
-    if (!this.acceptsMultipleFiles) {
-      this.virtualInputElement.removeAttribute('multiple');
+  }
+
+  setAccepted() {
+    if (!this.accept) {
+      this.virtualInputElement.removeAttribute('accept');
+      return;
     }
+    this.virtualInputElement.setAttribute(
+      'accept',
+      this.accept.toString(),
+    );
   }
 
   ngOnDestroy() {

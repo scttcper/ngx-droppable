@@ -36,12 +36,13 @@ Add droppable directive to element
 ```
 ## [Inputs]
 
-| name                 | type      | default      | description                                        |
-| -------------------- | --------- | ------------ | -------------------------------------------------- |
-| isClickable          | `boolean` | `true`       | prompt for files when clicked                      |
-| acceptsMultipleFiles | `boolean` | `true`       | allow multiple files dropped or selected           |
-| appendStatusClasses  | `boolean` | `true`       | append CSS class when files are dragged on element |
-| dragOverClass        | `string`  | `'dragover'` | class added when files are hovered over element    |
+| name                 | type             | default      | description                                                                                                        |
+| -------------------- | ---------------- | ------------ | ------------------------------------------------------------------------------------------------------------------ |
+| isClickable          | `boolean`        | `true`       | prompt for files when clicked                                                                                      |
+| acceptsMultipleFiles | `boolean`        | `true`       | allow multiple files dropped or selected                                                                           |
+| appendStatusClasses  | `boolean`        | `true`       | append CSS class when files are dragged on element                                                                 |
+| dragOverClass        | `string`         | `'dragover'` | class added when files are hovered over element                                                                    |
+| accept               | `string | false` | `false`      | limit accepted file types via MIME [see mdn](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file) |
 
 ## (Ouput)
 
