@@ -34,21 +34,27 @@ export class DroppableDirective
   handleDragover(e: Event) {
     e.preventDefault();
     e.stopPropagation();
-    this.element.nativeElement.classList.add(this.dragOverClass);
+    if (this.appendStatusClasses) {
+      this.element.nativeElement.classList.add(this.dragOverClass);
+    }
   }
 
   @HostListener('dragleave', ['$event'])
   handleDragleave(e: Event) {
     e.preventDefault();
     e.stopPropagation();
-    this.element.nativeElement.classList.remove(this.dragOverClass);
+    if (this.appendStatusClasses) {
+      this.element.nativeElement.classList.remove(this.dragOverClass);
+    }
   }
 
   @HostListener('drop', ['$event'])
   handleDrop(e: Event) {
     e.preventDefault();
     e.stopPropagation();
-    this.element.nativeElement.classList.remove(this.dragOverClass);
+    if (this.appendStatusClasses) {
+      this.element.nativeElement.classList.remove(this.dragOverClass);
+    }
     this.onDroppableElementChange(e);
   }
 

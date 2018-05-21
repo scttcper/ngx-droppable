@@ -9,12 +9,14 @@ import { DroppableDirective } from './droppable.directive';
   template: `<div droppable #droppable="droppable"
     (filesDropped)="handleFilesDropped($event)"
     [acceptsMultipleFiles]="acceptsMultipleFiles"
-    ></div>
+    [appendStatusClasses]="appendStatusClasses"
+  ></div>
   `,
 })
 export class TestComponent {
   @ViewChild('droppable') droppable: DroppableDirective;
   acceptsMultipleFiles = true;
+  appendStatusClasses = true;
   files: File[] = [];
   handleFilesDropped(files: File[]) {
     this.files = files;
@@ -78,6 +80,20 @@ describe('Droppable', () => {
       const nc = fixture.debugElement.nativeElement;
       tc.droppable.handleDragover(fakeEvent);
       expect(nc.querySelector('div').classList.contains(tc.droppable.dragOverClass)).toBe(true);
+      expect(fakeEvent.preventDefault).toHaveBeenCalled();
+      expect(fakeEvent.stopPropagation).toHaveBeenCalled();
+      tc.droppable.handleDragleave(fakeEvent);
+      expect(nc.querySelector('div').classList.contains(tc.droppable.dragOverClass)).toBe(false);
+    }));
+    it('should not add the dragOverClass to the element when appendStatusClasses is false', async(() => {
+      const fixture = TestBed.createComponent(TestComponent);
+      fixture.detectChanges();
+      const tc: TestComponent = fixture.debugElement.componentInstance;
+      tc.appendStatusClasses = false;
+      fixture.detectChanges();
+      const nc = fixture.debugElement.nativeElement;
+      tc.droppable.handleDragover(fakeEvent);
+      expect(nc.querySelector('div').classList.contains(tc.droppable.dragOverClass)).toBe(false);
       expect(fakeEvent.preventDefault).toHaveBeenCalled();
       expect(fakeEvent.stopPropagation).toHaveBeenCalled();
       tc.droppable.handleDragleave(fakeEvent);
