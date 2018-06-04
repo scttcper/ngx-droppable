@@ -40,7 +40,7 @@
     "@angular/cli": "6.0.7",
     "@angular/language-service": "6.0.3",
     "@types/fs-extra": "5.0.2",
-    "@types/jasmine": "2.8.7",
+    "@types/jasmine": "2.8.8",
     "@types/node": "10.1.2",
     "codelyzer": "4.3.0",
     "fs-extra": "6.0.1",
