@@ -30,12 +30,15 @@ export class DroppableDirective
   @HostBinding('attr.tabIndex') tabIndex = 0;
   /** Accessibility **/
   @HostBinding('attr.role') role = 'button';
+  /** File is being hovered over, can be used to show something on hover */
+  isHover = false;
   private virtualInputElement: HTMLInputElement;
 
   @HostListener('dragover', ['$event'])
   handleDragover(e: Event) {
     e.preventDefault();
     e.stopPropagation();
+    this.isHover = true;
     if (this.appendStatusClasses) {
       this.element.nativeElement.classList.add(this.dragOverClass);
     }
@@ -45,6 +48,7 @@ export class DroppableDirective
   handleDragleave(e: Event) {
     e.preventDefault();
     e.stopPropagation();
+    this.isHover = false;
     if (this.appendStatusClasses) {
       this.element.nativeElement.classList.remove(this.dragOverClass);
     }
@@ -54,6 +58,7 @@ export class DroppableDirective
   handleDrop(e: Event) {
     e.preventDefault();
     e.stopPropagation();
+    this.isHover = false;
     if (this.appendStatusClasses) {
       this.element.nativeElement.classList.remove(this.dragOverClass);
     }

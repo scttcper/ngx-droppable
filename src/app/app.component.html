@@ -19,9 +19,10 @@
             <div class="col-12">
 
               <!-- Droppable -->
-              <div class="d-flex rounded justify-content-center droppable" droppable (filesDropped)="handleFilesDropped($event)">
+              <div class="d-flex rounded justify-content-center droppable" droppable #dropzone="droppable" (filesDropped)="handleFilesDropped($event)">
                 <div class="text-center align-self-center">
-                  <strong>Drop files here or click</strong>
+                  <strong *ngIf="!dropzone.isHover">Drop files here or click</strong>
+                  <strong *ngIf="dropzone.isHover">Drop the file!</strong>
                 </div>
               </div>
 
