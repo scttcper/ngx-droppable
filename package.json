@@ -52,7 +52,7 @@
     "karma-chrome-launcher": "2.2.0",
     "karma-coverage-istanbul-reporter": "2.0.1",
     "karma-jasmine": "1.1.2",
-    "karma-jasmine-html-reporter": "0.2.2",
+    "karma-jasmine-html-reporter": "1.2.0",
     "karma-mocha-reporter": "2.2.5",
     "semantic-release": "15.6.3",
     "travis-deploy-once": "5.0.1",
