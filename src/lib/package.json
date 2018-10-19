@@ -5,8 +5,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@angular/core": "^5.2.0 || ^6.0.0",
-    "@angular/common": "^5.2.0 || ^6.0.0"
+    "@angular/core": "^5.2.0 || ^6.0.0 || ^7.0.0",
+    "@angular/common": "^5.2.0 || ^6.0.0 || ^7.0.0"
   },
   "ngPackage": {
     "lib": {
