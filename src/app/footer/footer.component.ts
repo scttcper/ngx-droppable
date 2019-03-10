@@ -8,8 +8,6 @@ import { ChangeDetectionStrategy, Component, VERSION } from '@angular/core';
     <a href="https://github.com/typectrl/ngx-droppable">View Source</a>
     <br>
     Demo using Angular {{ version }}
-    <br>
-    Listed on <a target="_blank" href="https://angular.parts/package/@ctrl/ngx-droppable">Angular.parts</a>
   </footer>
   `,
   styles: [`
