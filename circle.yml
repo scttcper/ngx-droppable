@@ -42,7 +42,7 @@ jobs:
             git config user.name "ci-build"
             ssh-add -D
       - run: npm run ghpages
-      - run: npx gh-pages -x -d docs -m "update docs [ci skip]" -r https://${GH_TOKEN}@github.com/typectrl/ngx-droppable.git
+      - run: npx gh-pages -x -d dist -m "update docs [ci skip]" -r https://${GH_TOKEN}@github.com/typectrl/ngx-droppable.git
 
 workflows:
   version: 2
