@@ -83,7 +83,7 @@ export class DroppableDirective
   }
 
   constructor(
-    @Inject(DOCUMENT) protected document: Document,
+    @Inject(DOCUMENT) protected document: any,
     private element: ElementRef,
   ) {}
 
