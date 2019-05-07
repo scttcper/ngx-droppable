@@ -2,7 +2,9 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: circleci/node:10
+      - image: circleci/node:10-browsers
+        environment:
+          CHROME_BIN: '/usr/bin/google-chrome'
     steps:
       - checkout
       - restore_cache:
