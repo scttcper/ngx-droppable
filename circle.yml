@@ -41,7 +41,7 @@ jobs:
             git config user.email "scttcper@gmail.com"
             git config user.name "ci-build"
             ssh-add -D
-      - run: npm run build:docs
+      - run: npm run ghpages
       - run: npx gh-pages -x -d docs -m "update docs [ci skip]" -r https://${GH_TOKEN}@github.com/typectrl/ngx-droppable.git
 
 workflows:
