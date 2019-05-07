@@ -26,9 +26,13 @@ export class DroppableDirective
   @Input() appendStatusClasses = true;
   @Input() dragOverClass = 'dragover';
   @Output() filesDropped = new EventEmitter<File[]>();
-  /** Accessibility **/
+  /**
+   * Accessibility
+   */
   @HostBinding('attr.tabIndex') tabIndex = 0;
-  /** Accessibility **/
+  /**
+   * Accessibility
+   */
   @HostBinding('attr.role') role = 'button';
   /** File is being hovered over, can be used to show something on hover */
   isHover = false;
@@ -79,7 +83,7 @@ export class DroppableDirective
   }
 
   constructor(
-    @Inject(DOCUMENT) protected _document: any,
+    @Inject(DOCUMENT) protected document: Document,
     private element: ElementRef,
   ) {}
 
@@ -133,7 +137,7 @@ export class DroppableDirective
   }
 
   makeVirtualInputElement() {
-    const input = this._document.createElement('input');
+    const input = this.document.createElement('input');
     input.setAttribute('type', 'file');
     input.style.display = 'none';
     return input;
@@ -146,10 +150,10 @@ export class DroppableDirective
 
   onDroppableElementChange(event: { [key: string]: any }) {
     let files;
-    if (event['dataTransfer']) {
-      files = event['dataTransfer'].files;
-    } else if (event['target']) {
-      files = event['target'].files;
+    if (event.dataTransfer) {
+      files = event.dataTransfer.files;
+    } else if (event.target) {
+      files = event.target.files;
     } else {
       throw Error('Fired event contains no files');
     }

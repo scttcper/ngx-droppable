@@ -61,7 +61,7 @@ describe('Droppable', () => {
     const fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     const tc: TestComponent = fixture.debugElement.componentInstance;
-    const mock = spyOn(tc.droppable['virtualInputElement'], 'click');
+    const mock = spyOn((tc.droppable as any).virtualInputElement, 'click');
     tc.droppable.promptForFiles();
     expect(mock).toHaveBeenCalled();
   }));
@@ -69,7 +69,7 @@ describe('Droppable', () => {
     const fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     const tc: TestComponent = fixture.debugElement.componentInstance;
-    expect(tc.droppable['virtualInputElement'].getAttribute('multiple')).toBe('true');
+    expect((tc.droppable as any).virtualInputElement.getAttribute('multiple')).toBe('true');
   }));
   it('should remove multiple', async(() => {
     const fixture = TestBed.createComponent(TestComponent);
@@ -77,13 +77,13 @@ describe('Droppable', () => {
     const tc: TestComponent = fixture.debugElement.componentInstance;
     tc.acceptsMultipleFiles = false;
     fixture.detectChanges();
-    expect(tc.droppable['virtualInputElement'].getAttribute('multiple')).toBe(null);
+    expect((tc.droppable as any).virtualInputElement.getAttribute('multiple')).toBe(null);
   }));
   it('should set accepted', async(() => {
     const fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     const tc: TestComponent = fixture.debugElement.componentInstance;
-    expect(tc.droppable['virtualInputElement'].getAttribute('accept')).toBe('.jpg');
+    expect((tc.droppable as any).virtualInputElement.getAttribute('accept')).toBe('.jpg');
   }));
   it('should remove accepted', async(() => {
     const fixture = TestBed.createComponent(TestComponent);
@@ -91,7 +91,7 @@ describe('Droppable', () => {
     const tc: TestComponent = fixture.debugElement.componentInstance;
     tc.accept = false;
     fixture.detectChanges();
-    expect(tc.droppable['virtualInputElement'].getAttribute('accept')).toBe(null);
+    expect((tc.droppable as any).virtualInputElement.getAttribute('accept')).toBe(null);
   }));
   describe('handleDragover(event)', () => {
     let fakeEvent: any;
