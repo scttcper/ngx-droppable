@@ -18,7 +18,7 @@
 
 Based on [droppable.js](https://github.com/lifenautjoe/droppable)  
 
-Demo: https://typectrl.github.io/ngx-droppable/
+Demo: https://ngx-droppable.netlify.com/  
 
 ## Install
 ```sh
