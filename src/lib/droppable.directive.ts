@@ -120,10 +120,7 @@ export class DroppableDirective
       this.virtualInputElement.removeAttribute('accept');
       return;
     }
-    this.virtualInputElement.setAttribute(
-      'accept',
-      this.accept.toString(),
-    );
+    this.virtualInputElement.setAttribute('accept', this.accept.toString());
   }
 
   ngOnDestroy() {

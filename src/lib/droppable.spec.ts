@@ -15,7 +15,7 @@ import { DroppableDirective } from './droppable.directive';
   `,
 })
 export class TestComponent {
-  @ViewChild('droppable') droppable: DroppableDirective;
+  @ViewChild('droppable', { static: true }) droppable: DroppableDirective;
   acceptsMultipleFiles = true;
   appendStatusClasses = true;
   accept: string | false = '.jpg';

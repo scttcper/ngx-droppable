@@ -1,9 +1,8 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { NtkmeButtonModule } from '@ctrl/ngx-github-buttons';
+import { MdoButtonModule } from '@ctrl/ngx-github-buttons';
 import { ToastrModule } from 'ngx-toastr';
 
 import { DroppableModule } from '../lib/public_api';
@@ -14,9 +13,8 @@ import { FooterComponent } from './footer/footer.component';
   declarations: [AppComponent, FooterComponent],
   imports: [
     BrowserModule,
-    HttpClientModule,
     BrowserAnimationsModule,
-    NtkmeButtonModule,
+    MdoButtonModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-center',
       newestOnTop: false,
