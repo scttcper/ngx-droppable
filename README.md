@@ -24,7 +24,7 @@ Demo: https://ngx-droppable.netlify.com/
 
 Latest version available for each version of Angular
 
-| @ctrl/ngx-codemirror | Angular |
+| @ctrl/ngx-droppable  | Angular |
 | -------------------- | ------- |
 | 2.0.1                | 8.x     |
 | current              | >= 9.x  |
