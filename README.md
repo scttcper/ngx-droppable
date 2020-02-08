@@ -20,6 +20,16 @@ Based on [droppable.js](https://github.com/lifenautjoe/droppable)
 
 Demo: https://ngx-droppable.netlify.com/  
 
+## Dependencies
+
+Latest version available for each version of Angular
+
+| @ctrl/ngx-codemirror | Angular |
+| -------------------- | ------- |
+| 2.0.1                | 8.x     |
+| current              | >= 9.x  |
+
+
 ## Install
 ```sh
 npm install @ctrl/ngx-droppable
