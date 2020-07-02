@@ -4,7 +4,7 @@
 
 Based on [droppable.js](https://github.com/lifenautjoe/droppable)
 
-Demo: https://ngx-droppable.vercel.app  
+Demo: https://ngx-droppable.vercel.app
 
 ## Dependencies
 
