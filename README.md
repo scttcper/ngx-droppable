@@ -14,44 +14,50 @@
   <br>
 </div>
 
-> Give file dropping super-powers to any element or component  
+> Give file dropping super-powers to any element or component
 
-Based on [droppable.js](https://github.com/lifenautjoe/droppable)  
+Based on [droppable.js](https://github.com/lifenautjoe/droppable)
 
-Demo: https://ngx-droppable.netlify.com/  
+Demo: https://ngx-droppable.vercel.app  
 
 ## Dependencies
 
 Latest version available for each version of Angular
 
-| @ctrl/ngx-droppable  | Angular |
-| -------------------- | ------- |
-| 2.0.1                | 8.x     |
-| current              | >= 9.x  |
-
+| @ctrl/ngx-droppable | Angular |
+| ------------------- | ------- |
+| 2.0.1               | 8.x     |
+| 3.0.1               | 9.x     |
+| current             | >= 10.x |
 
 ## Install
+
 ```sh
 npm install @ctrl/ngx-droppable
 ```
 
 ## Use
+
 Import and Add to module
+
 ```ts
-import { DroppableModule } from '@ctrl/ngx-droppable';
+import { DroppableModule } from "@ctrl/ngx-droppable";
 ```
+
 Add droppable directive to element
+
 ```html
 <div droppable (filesDropped)="handleFilesDropped($event)"></div>
 ```
+
 ## [Inputs]
 
-| name                 | type             | default      | description                                                                                                        |
-| -------------------- | ---------------- | ------------ | ------------------------------------------------------------------------------------------------------------------ |
-| isClickable          | `boolean`        | `true`       | prompt for files when clicked                                                                                      |
-| acceptsMultipleFiles | `boolean`        | `true`       | allow multiple files dropped or selected                                                                           |
-| appendStatusClasses  | `boolean`        | `true`       | append CSS class when files are dragged on element                                                                 |
-| dragOverClass        | `string`         | `'dragover'` | class added when files are hovered over element                                                                    |
+| name                 | type              | default      | description                                                                                                        |
+| -------------------- | ----------------- | ------------ | ------------------------------------------------------------------------------------------------------------------ |
+| isClickable          | `boolean`         | `true`       | prompt for files when clicked                                                                                      |
+| acceptsMultipleFiles | `boolean`         | `true`       | allow multiple files dropped or selected                                                                           |
+| appendStatusClasses  | `boolean`         | `true`       | append CSS class when files are dragged on element                                                                 |
+| dragOverClass        | `string`          | `'dragover'` | class added when files are hovered over element                                                                    |
 | accept               | `string \| false` | `false`      | limit accepted file types via MIME [see mdn](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file) |
 
 ## (Ouput)
@@ -61,6 +67,7 @@ Add droppable directive to element
 | filesDropped | `File[]` | An array of the [files blobs](https://developer.mozilla.org/en-US/docs/Web/API/File) that have been added |
 
 ## License
+
 MIT
 
 ---

@@ -1,3 +1,4 @@
+/* tslint:disable:no-any */
 import { Component, ViewChild } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
 
@@ -6,21 +7,23 @@ import { DroppableDirective } from './droppable.directive';
 
 @Component({
   selector: 'test-droppable',
-  template: `<div droppable #droppable="droppable"
+  template: `<div
+    droppable
+    #droppable="droppable"
     (filesDropped)="handleFilesDropped($event)"
     [acceptsMultipleFiles]="acceptsMultipleFiles"
     [appendStatusClasses]="appendStatusClasses"
     [accept]="accept"
-  ></div>
-  `,
+  ></div> `,
+  exportAs: 'test-droppable',
 })
 export class TestComponent {
-  @ViewChild('droppable', { static: true }) droppable: DroppableDirective;
+  @ViewChild('droppable', { static: true }) droppable!: DroppableDirective;
   acceptsMultipleFiles = true;
   appendStatusClasses = true;
   accept: string | false = '.jpg';
   files: File[] = [];
-  handleFilesDropped(files: File[]) {
+  handleFilesDropped(files: File[]): void {
     this.files = files;
   }
 }
@@ -69,7 +72,9 @@ describe('Droppable', () => {
     const fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     const tc: TestComponent = fixture.debugElement.componentInstance;
-    expect((tc.droppable as any).virtualInputElement.getAttribute('multiple')).toBe('true');
+    expect(
+      (tc.droppable as any).virtualInputElement.getAttribute('multiple')
+    ).toBe('true');
   }));
   it('should remove multiple', async(() => {
     const fixture = TestBed.createComponent(TestComponent);
@@ -77,13 +82,17 @@ describe('Droppable', () => {
     const tc: TestComponent = fixture.debugElement.componentInstance;
     tc.acceptsMultipleFiles = false;
     fixture.detectChanges();
-    expect((tc.droppable as any).virtualInputElement.getAttribute('multiple')).toBe(null);
+    expect(
+      (tc.droppable as any).virtualInputElement.getAttribute('multiple')
+    ).toBe(null);
   }));
   it('should set accepted', async(() => {
     const fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     const tc: TestComponent = fixture.debugElement.componentInstance;
-    expect((tc.droppable as any).virtualInputElement.getAttribute('accept')).toBe('.jpg');
+    expect(
+      (tc.droppable as any).virtualInputElement.getAttribute('accept')
+    ).toBe('.jpg');
   }));
   it('should remove accepted', async(() => {
     const fixture = TestBed.createComponent(TestComponent);
@@ -91,7 +100,9 @@ describe('Droppable', () => {
     const tc: TestComponent = fixture.debugElement.componentInstance;
     tc.accept = false;
     fixture.detectChanges();
-    expect((tc.droppable as any).virtualInputElement.getAttribute('accept')).toBe(null);
+    expect(
+      (tc.droppable as any).virtualInputElement.getAttribute('accept')
+    ).toBe(null);
   }));
   describe('handleDragover(event)', () => {
     let fakeEvent: any;
@@ -109,11 +120,15 @@ describe('Droppable', () => {
       const tc: TestComponent = fixture.debugElement.componentInstance;
       const nc = fixture.debugElement.nativeElement;
       tc.droppable.handleDragover(fakeEvent);
-      expect(nc.querySelector('div').classList.contains(tc.droppable.dragOverClass)).toBe(true);
+      expect(
+        nc.querySelector('div').classList.contains(tc.droppable.dragOverClass)
+      ).toBe(true);
       expect(fakeEvent.preventDefault).toHaveBeenCalled();
       expect(fakeEvent.stopPropagation).toHaveBeenCalled();
       tc.droppable.handleDragleave(fakeEvent);
-      expect(nc.querySelector('div').classList.contains(tc.droppable.dragOverClass)).toBe(false);
+      expect(
+        nc.querySelector('div').classList.contains(tc.droppable.dragOverClass)
+      ).toBe(false);
     }));
     it('should not add the dragOverClass to the element when appendStatusClasses is false', async(() => {
       const fixture = TestBed.createComponent(TestComponent);
@@ -123,11 +138,15 @@ describe('Droppable', () => {
       fixture.detectChanges();
       const nc = fixture.debugElement.nativeElement;
       tc.droppable.handleDragover(fakeEvent);
-      expect(nc.querySelector('div').classList.contains(tc.droppable.dragOverClass)).toBe(false);
+      expect(
+        nc.querySelector('div').classList.contains(tc.droppable.dragOverClass)
+      ).toBe(false);
       expect(fakeEvent.preventDefault).toHaveBeenCalled();
       expect(fakeEvent.stopPropagation).toHaveBeenCalled();
       tc.droppable.handleDragleave(fakeEvent);
-      expect(nc.querySelector('div').classList.contains(tc.droppable.dragOverClass)).toBe(false);
+      expect(
+        nc.querySelector('div').classList.contains(tc.droppable.dragOverClass)
+      ).toBe(false);
     }));
   });
 });

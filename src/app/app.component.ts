@@ -6,10 +6,9 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-
   constructor(private toastr: ToastrService) {}
 
-  handleFilesDropped(files: File[]) {
+  handleFilesDropped(files: File[]): void {
     console.log('Files:', files);
     files.map((n) => this.toastr.success(n.name, 'File Dropped'));
   }

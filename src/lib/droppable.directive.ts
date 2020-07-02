@@ -36,10 +36,10 @@ export class DroppableDirective
   @HostBinding('attr.role') role = 'button';
   /** File is being hovered over, can be used to show something on hover */
   isHover = false;
-  private virtualInputElement: HTMLInputElement;
+  private virtualInputElement!: HTMLInputElement;
 
   @HostListener('dragover', ['$event'])
-  handleDragover(e: Event) {
+  handleDragover(e: Event): void {
     e.preventDefault();
     e.stopPropagation();
     this.isHover = true;
@@ -49,7 +49,7 @@ export class DroppableDirective
   }
 
   @HostListener('dragleave', ['$event'])
-  handleDragleave(e: Event) {
+  handleDragleave(e: Event): void {
     e.preventDefault();
     e.stopPropagation();
     this.isHover = false;
@@ -59,7 +59,7 @@ export class DroppableDirective
   }
 
   @HostListener('drop', ['$event'])
-  handleDrop(e: Event) {
+  handleDrop(e: Event): void {
     e.preventDefault();
     e.stopPropagation();
     this.isHover = false;
@@ -70,31 +70,31 @@ export class DroppableDirective
   }
 
   @HostListener('click', ['$event'])
-  handleClick(e: Event) {
+  handleClick(e: Event): void {
     if (this.isClickable) {
       this.promptForFiles();
     }
   }
 
   @HostListener('keydown.enter', ['$event'])
-  handleEnter(e: Event) {
+  handleEnter(e: Event): void {
     this.promptForFiles();
     this.element.nativeElement.blur();
   }
 
   constructor(
-    @Inject(DOCUMENT) protected document: any,
+    @Inject(DOCUMENT) protected document: Document,
     private element: ElementRef,
   ) {}
 
-  ngOnChanges() {
+  ngOnChanges(): void {
     if (this.virtualInputElement) {
       this.setAcceptsMultipleFiles();
       this.setAccepted();
     }
   }
 
-  ngAfterContentInit() {
+  ngAfterContentInit(): void {
     this.virtualInputElement = this.makeVirtualInputElement();
     this.virtualInputElement.addEventListener(
       'change',
@@ -104,7 +104,7 @@ export class DroppableDirective
     this.setAccepted();
   }
 
-  setAcceptsMultipleFiles() {
+  setAcceptsMultipleFiles(): void {
     if (!this.acceptsMultipleFiles) {
       this.virtualInputElement.removeAttribute('multiple');
       return;
@@ -115,7 +115,7 @@ export class DroppableDirective
     );
   }
 
-  setAccepted() {
+  setAccepted(): void {
     if (!this.accept) {
       this.virtualInputElement.removeAttribute('accept');
       return;
@@ -123,7 +123,7 @@ export class DroppableDirective
     this.virtualInputElement.setAttribute('accept', this.accept.toString());
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     // destroy created input
     if (this.virtualInputElement) {
       this.virtualInputElement.removeEventListener(
@@ -133,19 +133,20 @@ export class DroppableDirective
     }
   }
 
-  makeVirtualInputElement() {
+  makeVirtualInputElement(): HTMLInputElement {
     const input = this.document.createElement('input');
     input.setAttribute('type', 'file');
     input.style.display = 'none';
     return input;
   }
 
-  onVirtualInputElementChange(e: Event) {
+  onVirtualInputElementChange(e: Event): void {
     this.onDroppableElementChange(e);
     this.virtualInputElement.value = '';
   }
 
-  onDroppableElementChange(event: { [key: string]: any }) {
+  // tslint:disable-next-line:no-any
+  onDroppableElementChange(event: { [key: string]: any }): void {
     let files;
     if (event.dataTransfer) {
       files = event.dataTransfer.files;
@@ -160,7 +161,7 @@ export class DroppableDirective
     this.filesDropped.emit(filesArray);
   }
 
-  promptForFiles() {
+  promptForFiles(): void {
     this.virtualInputElement.click();
   }
 }

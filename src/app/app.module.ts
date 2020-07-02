@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MdoButtonModule } from '@ctrl/ngx-github-buttons';
+import { GhButtonModule } from '@ctrl/ngx-github-buttons';
 import { ToastrModule } from 'ngx-toastr';
 
 import { DroppableModule } from '../lib/public_api';
@@ -14,7 +14,7 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MdoButtonModule,
+    GhButtonModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-center',
       newestOnTop: false,
