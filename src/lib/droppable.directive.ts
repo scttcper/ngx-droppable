@@ -83,7 +83,8 @@ export class DroppableDirective
   }
 
   constructor(
-    @Inject(DOCUMENT) protected document: Document,
+    // tslint:disable-next-line:no-any
+    @Inject(DOCUMENT) protected document: any,
     private element: ElementRef,
   ) {}
 
@@ -134,7 +135,7 @@ export class DroppableDirective
   }
 
   makeVirtualInputElement(): HTMLInputElement {
-    const input = this.document.createElement('input');
+    const input: HTMLInputElement = this.document.createElement('input');
     input.setAttribute('type', 'file');
     input.style.display = 'none';
     return input;
