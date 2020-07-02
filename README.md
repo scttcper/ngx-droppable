@@ -1,18 +1,4 @@
-<div align="center">
-  <h1>ngx-droppable</h1>
-  <br>
-  <a href="https://www.npmjs.com/package/@ctrl/ngx-droppable">
-    <img src="https://img.shields.io/npm/v/@ctrl/ngx-droppable.svg" alt="npm">
-  </a>
-  <a href="https://travis-ci.org/TypeCtrl/ngx-droppable">
-    <img src="https://img.shields.io/travis/TypeCtrl/ngx-droppable/master.svg" alt="travis">
-  </a>
-  <a href="https://codecov.io/github/typectrl/ngx-droppable">
-    <img src="https://img.shields.io/codecov/c/github/typectrl/ngx-droppable.svg" alt="codecov">
-  </a>
-  <br>
-  <br>
-</div>
+# ngx-droppable [![npm](https://badgen.net/npm/v/@ctrl/ngx-droppable)](https://www.npmjs.com/package/@ctrl/ngx-droppable) [![CircleCI](https://badgen.net/github/status/typectrl/ngx-droppable)](https://circleci.com/gh/TypeCtrl/ngx-droppable) [![coverage](https://badgen.net/codecov/c/github/typectrl/ngx-droppable)](https://codecov.io/gh/typectrl/ngx-droppable)
 
 > Give file dropping super-powers to any element or component
 
