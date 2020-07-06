@@ -31,7 +31,7 @@
     "@angular/router": "10.0.2",
     "@ctrl/ngx-github-buttons": "6.0.2",
     "@types/jasmine": "3.5.11",
-    "@types/node": "14.0.14",
+    "@types/node": "14.0.18",
     "bootstrap": "4.5.0",
     "codelyzer": "5.2.2",
     "core-js": "3.6.5",
