@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component, VERSION } from '@angular/core';
   selector: 'app-footer',
   template: `
   <footer class="footer mt-3 mb-5">
-    <a href="https://github.com/typectrl/ngx-droppable">View Source</a>
+    <a href="https://github.com/scttcper/ngx-droppable">View Source</a>
     <br>
     Demo using Angular {{ version }}
   </footer>

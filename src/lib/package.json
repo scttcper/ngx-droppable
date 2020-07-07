@@ -14,9 +14,9 @@
     },
     "dest": "../../dist"
   },
-  "repository": "typectrl/ngx-droppable",
-  "homepage": "https://github.com/typectrl/ngx-droppable",
-  "bugs": "https://github.com/typectrl/ngx-droppable/issues",
+  "repository": "scttcper/ngx-droppable",
+  "homepage": "https://github.com/scttcper/ngx-droppable",
+  "bugs": "https://github.com/scttcper/ngx-droppable/issues",
   "license": "MIT",
   "description": "give file dropping super-powers to any HTML element",
   "keywords": [
