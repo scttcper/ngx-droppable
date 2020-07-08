@@ -12,8 +12,6 @@ Latest version available for each version of Angular
 
 | @ctrl/ngx-droppable | Angular |
 | ------------------- | ------- |
-| 2.0.1               | 8.x     |
-| 3.0.1               | 9.x     |
 | current             | >= 10.x |
 
 ## Install
